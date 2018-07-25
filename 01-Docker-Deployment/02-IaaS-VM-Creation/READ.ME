@@ -1,0 +1,28 @@
+----------------Argument Description---------------------------------------------------------------------------------------------------
+
+r = is used for request number - provide your numericaly OSC request number
+e = is used for environment - choose between this 2 availables environments - osclad004 and osclad005
+o = is used for OS - choose between this 2 availables OS's - OL7.2, Ubuntu16, WS2012, WS2008, WS2016 and Centos7
+s = is used for Storage Size - provide the Storage size of your boot disk in GB
+q = is used for VM Shape - choose between 7 different shapes available - 1_OCPU, 2_OCPU, 4_OCPU, 8_OCPU, 16_OCPU, 24_OCPU and 32_OCPU
+k = is used to auto approve VM creation - use yes to auto approve
+
+----------------Example of usage---------------------------------------------------------------------------------------------------
+
+Example of output after running ./create_compute_resources.sh -r 12 -e osclad004 -o OL_7.2_UEKR3 -s 150 -q 1_OCPU -k yes
+
+terraform files in: ./requests/osc<request_number>/
+If it is the first Linux machine created for this request, the script will create a openssh key tha will be located with terraform files
+
+The instance will be created with the name osc12cp1 will have:
+OS                              : OL_7.2_UEKR3
+Nº of Storage Volumes           : 1
+Storage Volume Name             : osc12st1
+Size of Boot Volume             : 150 GB
+VM Shape                        : 1 OCPU 15 GB Ram
+IP Network Name                 : osc12ipnet1
+IP Network                      : 10.0.0.0/24
+Public IP in IP Network         : yes
+Ingress Rules Allowed           : ssh and IP Network IPs
+Egress Rules Allowed            : All
+SSH Key                         : id_rsa located in ./requests/osc<request_number>/
